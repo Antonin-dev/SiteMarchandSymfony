@@ -3,20 +3,30 @@
 {% block title %}Nos produits - La Boutique Francaise{% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Filtrer</h3>
+            {{form(form)}}
+        </div>
+        <div class="col-md-9">
+            <h1>Nos produits</h1>
 
-    <h1>Nos produits</h1>
-
-    <div class="row product-container">
-        {% for product in products %}
-            <div class="col-md-4">
-                <div class="product-item text-center">
-                    <img src="/uploads/{{product.illustration}}" alt="" class="img-fluid">
-                    <h5>{{product.name}}</h5>
-                    <span class="product-subtitle">{{product.subtitle}}</span>
-                    <span class="product-price">{{(product.price / 100)|number_format(2, ',', '.')}}</span>
-                    {# on modifie le format pour avoir deux chiffre apres la virgule et la virgule #}
-                </div>
+            <div class="row product-container">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="product-item text-center">
+                            <a href="{{ path('product', { 'slug' : product.slug } ) }}"><img src="/uploads/{{product.illustration}}" alt="" class="img-fluid"></a>
+                            {# Je passe dans le path la direction vers product et le slug pour pouvoir le gerer dans le controller #}
+                            <h5>{{product.name}}</h5>
+                            <span class="product-subtitle">{{product.subtitle}}</span>
+                            <span class="product-price">{{(product.price / 100)|number_format(2, ',', '.')}}</span>
+                            {# on modifie le format pour avoir deux chiffre apres la virgule et la virgule #}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
+
+    
 {% endblock %}

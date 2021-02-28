@@ -1,3 +1,7 @@
+body{
+    position: relative;
+}
+
 .navbar-item-custom, .navbar-item-custom a{
 
 color: #FFF;
@@ -7,7 +11,7 @@ color: #FFF;
 .footer-custom{
 
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: #DFEAFF;
@@ -48,4 +52,10 @@ color: #FFF;
 .product-container{
 
     margin-bottom: 150px;
+}
+
+.product-page-price{
+
+    font-size: 19px;
+    
 }
