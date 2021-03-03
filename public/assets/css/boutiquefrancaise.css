@@ -15,6 +15,7 @@ color: #FFF;
     width: 100%;
     background-color: #DFEAFF;
     padding-top: 25px;
+    margin-top: 50px;
 
     /* Footer fixé bottom */
 }
@@ -57,4 +58,9 @@ color: #FFF;
 
     font-size: 19px;
     
+}
+
+.cart-icon{
+    height: 20px;
+    padding-left: 20px;
 }
