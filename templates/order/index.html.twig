@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande - La Boutique Francaise{% endblock %}
+
+{% block content %}
+    <h2>Je passe ma commande</h2>
+    <p>Choisissez vos préférences avant de passer votre commande sur La Boutique Francaise.</p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+                {# Je crée une variabel sethtml #}
+                {{form(form)}}
+            {% endset %}
+            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+            {# Je demande dans sethtml de remplacer les [br] par des br classique et je demande avec raw d'interpreter le html #}
+        </div>
+        <div class="col-md-6">
+
+            <div class="text-center">
+                <b>Récap de ma commande</b><br>
+                <p>Retrouvez le récapitulatif de vos produits</p>
+            </div>
+            
+
+            <div class="order-summary">
+                {% for key,product in cart %}
+                {# Si il y a plus de 1 produit je met une margin top #}
+                <div class="row {% if key > 0 %}mt-2{% endif %}">
+                    <div class="col-2 my-auto"><img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name }}" height="75px"></div>
+                    <div class="col-8">
+                        {{ product.product.name }}<br/>
+                        <small>{{product.product.subtitle}}</small>  
+                    </div>
+                    <div class="col-2 my-auto">x {{product.quantity}}</div>
+                </div>
+                    
+                    
+                {% endfor %}
+            </div>
+            
+            
+        </div>
+    </div>
+
+{% endblock %}
