@@ -10,7 +10,11 @@
         <div class="col-md-6">
             {% set formHtml %}
                 {# Je crée une variabel sethtml #}
-                {{form(form)}}
+                {{form_start(form, {action:path('order_recap')})}}
+                {{form_label(form.adresses, 'Choisissez votre adresse de livraison')}}
+                <a href="{{path('account_address_add')}}">Ajouter une nouvelle adresse</a>
+                {{form_end(form)}}
+
             {% endset %}
             {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
             {# Je demande dans sethtml de remplacer les [br] par des br classique et je demande avec raw d'interpreter le html #}
