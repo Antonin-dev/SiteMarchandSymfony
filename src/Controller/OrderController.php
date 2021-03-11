@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Classe\Cart;
 use App\Entity\Order;
-use App\Entity\OrderDetails;
 use App\Form\OrderType;
-use DateTime;
+use App\Entity\OrderDetails;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class OrderController extends AbstractController
 {
@@ -84,6 +84,10 @@ class OrderController extends AbstractController
 
             $this->entityManager->persist($order);
 
+            // STRIPE GESTION
+           
+
+
             // Enregistrer mes produits OrderDetails()
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails;
@@ -94,9 +98,10 @@ class OrderController extends AbstractController
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 
                 $this->entityManager->persist($orderDetails);
+
             }
 
-            $this->entityManager->flush();
+            // $this->entityManager->flush();            
             
             return $this->render('order/add.html.twig', [
             'cart' => $cart->getFull(),
