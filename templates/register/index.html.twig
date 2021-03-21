@@ -3,6 +3,9 @@
 {% block content %}
 
     <h1>Inscription</h1>
+    {% if notification %}
+        <div class="alert alert-info">{{notification}}</div>
+    {% endif %}
     {{ form(form) }}
     {# J'appele l'atributs form avec l'atributs form #}
 
