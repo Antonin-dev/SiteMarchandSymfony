@@ -1,0 +1,8 @@
+<div class="product-item text-center">
+                            <a href="{{ path('product', { 'slug' : product.slug } ) }}"><img src="/uploads/{{product.illustration}}" alt="" class="img-fluid"></a>
+                            {# Je passe dans le path la direction vers product et le slug pour pouvoir le gerer dans le controller #}
+                            <h5>{{product.name}}</h5>
+                            <span class="product-subtitle">{{product.subtitle}}</span>
+                            <span class="product-price">{{(product.price / 100)|number_format(2, ',', '.')}}</span>
+                            {# on modifie le format pour avoir deux chiffre apres la virgule et la virgule #}
+                        </div>

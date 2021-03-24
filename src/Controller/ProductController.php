@@ -55,6 +55,10 @@ class ProductController extends AbstractController
         $product = $this->entityManager->getRepository(Product::class)->findOneBy([
             'slug' => $slug
         ]);
+
+        $products = $this->entityManager->getRepository(Product::class)->findBy([
+            'isBest' => 1
+        ]);
         // Je recherche par le slug  dans la bdd
         if (!$product) {
             return $this->redirectToRoute('products');
@@ -62,7 +66,8 @@ class ProductController extends AbstractController
         
 
         return $this->render('product/show.html.twig', [
-            'product' => $product
+            'product' => $product,
+            'products' => $products
         ]);
     }
 }

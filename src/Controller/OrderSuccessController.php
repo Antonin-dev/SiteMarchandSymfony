@@ -31,10 +31,10 @@ class OrderSuccessController extends AbstractController
             return $this->redirectToRoute('home');
         }
         
-        if (!$order->getIsPaid()) {
+        if ($order->getState() == 0) {
             
             // Modifier le statis is pais de notre commande par 1
-            $order->setIsPaid(1);
+            $order->setState(1);
             $this->entityManager->flush();
 
             // Vider le panier
