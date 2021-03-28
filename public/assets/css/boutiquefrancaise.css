@@ -90,3 +90,23 @@ color: #FFF;
     margin-top: 22px;
 }
 
+.account-item{
+    background-color: #f1F2f6;
+    padding: 70px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-item a {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #4b6584;
+    font-weight: bold;
+}
+
+.account-item a:hover {
+    color: #778ca3;
+    text-decoration: none;
+}
